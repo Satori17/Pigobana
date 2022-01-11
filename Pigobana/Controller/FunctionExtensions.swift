@@ -37,6 +37,8 @@ extension PlayVC {
         closedCardsUI(exist: true)
         let image = UIImage(named: "blue_background")
         closedCards.setImage(image, for: .highlighted)
+        //Changing direction of horizontal scrolling
+        player2CardCollectionView.transform = CGAffineTransform(scaleX: -1,y: 1)
         //card hider fades
         gradientForHiderView(gradientMask: gradientMaskLayer, cardHider: hideCardsView, player: 1)
         gradientForHiderView(gradientMask: gradientMaskLayer2, cardHider: hideCards2View, player: 2)

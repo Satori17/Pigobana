@@ -24,7 +24,6 @@ extension PlayVC: UICollectionViewDelegate, UICollectionViewDataSource {
             guard player1Cards.count > 0 else { return cell }
             let currentCard = player1Cards[indexPath.row].name
             cell.player1_cardImageView.image = UIImage(named: "\(currentCard)")
-            
             cell.player1CardUI()
             cardOverlays(collection: player1CardCollectionView, receivedCards: player1Cards)
             
@@ -33,14 +32,10 @@ extension PlayVC: UICollectionViewDelegate, UICollectionViewDataSource {
         } else {
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "Player2CardCell", for: indexPath) as! Player2CardCell
             guard player2Cards.count > 0 else { return cell2 }
-            //Flipping imageView
-            cell2.player2_cardImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double .pi))
-            //Direction of horizontal scrolling
-            player2CardCollectionView.transform = CGAffineTransform(scaleX: -1,y: 1)
-            cell2.transform = CGAffineTransform(scaleX: 1,y: -1)
             let currentCard = player2Cards[indexPath.row].name
-            cell2.player2_cardImageView.image = UIImage(named: "\(currentCard)")
             cell2.player2CardUI()
+            cell2.transform = CGAffineTransform(scaleX: 1,y: -1)
+            cell2.player2_cardImageView.image = UIImage(named: "\(currentCard)")
             cardOverlays(collection: player2CardCollectionView, receivedCards: player2Cards)
             
             return cell2
