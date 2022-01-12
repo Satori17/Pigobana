@@ -80,6 +80,7 @@ extension PlayVC: UICollectionViewDelegate, UICollectionViewDataSource {
             //Player 2
             playerController = 2
             player2CardCollectionView.reloadData()
+            
             //
             hideCardsView.isHidden = true
             hideCards2View.isHidden = false
