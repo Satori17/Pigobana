@@ -196,12 +196,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="898" y="75"/>
+            <point key="canvasLocation" x="1826.1538461538462" y="74.644549763033169"/>
         </scene>
         <!--Game OverVC-->
         <scene sceneID="fUZ-PZ-Ybu">
             <objects>
-                <viewController storyboardIdentifier="GameOverViewController" id="P5h-Fj-AVc" customClass="GameOverVC" customModule="Pigobana" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameOverVC" id="P5h-Fj-AVc" customClass="GameOverVC" customModule="Pigobana" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t3K-Km-yaj">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -261,7 +261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvf-tw-Ntz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1640" y="75"/>
+            <point key="canvasLocation" x="2569.2307692307691" y="74.644549763033169"/>
         </scene>
         <!--Launch ScreenVC-->
         <scene sceneID="XAG-wr-OmI">
@@ -313,7 +313,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a1d-5v-jQR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="49" y="75"/>
+            <point key="canvasLocation" x="1049" y="75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zku-gw-KA4">
@@ -327,12 +327,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="a0Z-ds-cbA" kind="relationship" relationship="rootViewController" id="29A-tC-Dhe"/>
+                        <segue destination="a0Z-ds-cbA" kind="relationship" relationship="rootViewController" id="9Mp-cG-S39"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWz-C3-hKO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-809" y="75"/>
+            <point key="canvasLocation" x="191" y="75"/>
         </scene>
     </scenes>
     <resources>

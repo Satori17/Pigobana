@@ -47,57 +47,57 @@ class PlayVC: UIViewController {
     var cardHolder: [CardModel] = []
     //Cards Data
     var cardsArray = [CardModel(name: "2C"),
-                             CardModel(name: "2D"),
-                             CardModel(name: "2H"),
-                             CardModel(name: "2S"),
-                             CardModel(name: "3C"),
-                             CardModel(name: "3D"),
-                             CardModel(name: "3H"),
-                             CardModel(name: "3S"),
-                             CardModel(name: "4C"),
-                             CardModel(name: "4D"),
-                             CardModel(name: "4H"),
-                             CardModel(name: "4S"),
-                             CardModel(name: "5C"),
-                             CardModel(name: "5D"),
-                             CardModel(name: "5H"),
-                             CardModel(name: "5S"),
-                             CardModel(name: "6C"),
-                             CardModel(name: "6D"),
-                             CardModel(name: "6H"),
-                             CardModel(name: "6S"),
-                             CardModel(name: "7C"),
-                             CardModel(name: "7D"),
-                             CardModel(name: "7H"),
-                             CardModel(name: "7S"),
-                             CardModel(name: "8C"),
-                             CardModel(name: "8D"),
-                             CardModel(name: "8H"),
-                             CardModel(name: "8S"),
-                             CardModel(name: "9C"),
-                             CardModel(name: "9D"),
-                             CardModel(name: "9H"),
-                             CardModel(name: "9S"),
-                             CardModel(name: "10C"),
-                             CardModel(name: "10D"),
-                             CardModel(name: "10H"),
-                             CardModel(name: "10S"),
-                             CardModel(name: "JC"),
-                             CardModel(name: "JD"),
-                             CardModel(name: "JH"),
-                             CardModel(name: "JS"),
-                             CardModel(name: "QC"),
-                             CardModel(name: "QD"),
-                             CardModel(name: "QH"),
-                             CardModel(name: "QS"),
-                             CardModel(name: "KC"),
-                             CardModel(name: "KD"),
-                             CardModel(name: "KH"),
-                             CardModel(name: "KS"),
-                             CardModel(name: "AC"),
-                             CardModel(name: "AD"),
-                             CardModel(name: "AH"),
-                             CardModel(name: "AS")
+                      CardModel(name: "2D"),
+                      CardModel(name: "2H"),
+                      CardModel(name: "2S"),
+                      CardModel(name: "3C"),
+                      CardModel(name: "3D"),
+                      CardModel(name: "3H"),
+                      CardModel(name: "3S"),
+                      CardModel(name: "4C"),
+                      CardModel(name: "4D"),
+                      CardModel(name: "4H"),
+                      CardModel(name: "4S"),
+                      CardModel(name: "5C"),
+                      CardModel(name: "5D"),
+                      CardModel(name: "5H"),
+                      CardModel(name: "5S"),
+                      CardModel(name: "6C"),
+                      CardModel(name: "6D"),
+                      CardModel(name: "6H"),
+                      CardModel(name: "6S"),
+                      CardModel(name: "7C"),
+                      CardModel(name: "7D"),
+                      CardModel(name: "7H"),
+                      CardModel(name: "7S"),
+                      CardModel(name: "8C"),
+                      CardModel(name: "8D"),
+                      CardModel(name: "8H"),
+                      CardModel(name: "8S"),
+                      CardModel(name: "9C"),
+                      CardModel(name: "9D"),
+                      CardModel(name: "9H"),
+                      CardModel(name: "9S"),
+                      CardModel(name: "10C"),
+                      CardModel(name: "10D"),
+                      CardModel(name: "10H"),
+                      CardModel(name: "10S"),
+                      CardModel(name: "JC"),
+                      CardModel(name: "JD"),
+                      CardModel(name: "JH"),
+                      CardModel(name: "JS"),
+                      CardModel(name: "QC"),
+                      CardModel(name: "QD"),
+                      CardModel(name: "QH"),
+                      CardModel(name: "QS"),
+                      CardModel(name: "KC"),
+                      CardModel(name: "KD"),
+                      CardModel(name: "KH"),
+                      CardModel(name: "KS"),
+                      CardModel(name: "AC"),
+                      CardModel(name: "AD"),
+                      CardModel(name: "AH"),
+                      CardModel(name: "AS")
     ]
     
     //MARK: - View LifeCycle
@@ -124,15 +124,15 @@ class PlayVC: UIViewController {
         controlPlayersAndCards()
        
       //navigation to Game over VC
-        let myStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let gameOverVC = myStoryboard.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverVC
+        let myStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameOverVC = myStoryboard.instantiateViewController(withIdentifier: "GameOverVC") as! GameOverVC
         gameOverVC.delegate = self
+        gameOverVC.modalPresentationStyle = .fullScreen
         
         if cardCounter == 52 {
             closedCardsUI(exist: false)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-                self?.cardCounter = 0
-                self?.navigationController?.pushViewController(gameOverVC, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.present(gameOverVC, animated: true, completion: { self.cardCounter = 0 })
             }
         }
     }
@@ -144,7 +144,7 @@ class PlayVC: UIViewController {
 
 extension PlayVC: NewGame {
     func startNewGame() {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
         player1CardCollectionView.isHidden = true
         player2CardCollectionView.isHidden = true
         hideCardsView.isHidden = true
