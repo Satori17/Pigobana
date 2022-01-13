@@ -272,35 +272,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Game That Every Georgian Knows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="nV5-LF-okT">
-                                <rect key="frame" x="35" y="481" width="320" height="42"/>
+                                <rect key="frame" x="35" y="302" width="320" height="42"/>
                                 <fontDescription key="fontDescription" name="Papyrus-Condensed" family="Papyrus" pointSize="27"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="Am4-Yd-xqH">
-                                <rect key="frame" x="5" y="197" width="380" height="450"/>
+                                <rect key="frame" x="5" y="44" width="380" height="400"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="450" id="OZ7-dF-Z9O"/>
+                                    <constraint firstAttribute="height" constant="400" id="jeZ-bc-iPR"/>
                                 </constraints>
                             </imageView>
-                            <progressView opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2v1-1Q-lwh">
-                                <rect key="frame" x="0.0" y="623" width="390" height="60"/>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2v1-1Q-lwh">
+                                <rect key="frame" x="50" y="650" width="290" height="8"/>
                                 <color key="tintColor" red="0.58039218189999997" green="0.84705877299999999" blue="0.41568624970000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="MRb-Fn-jAK"/>
+                                    <constraint firstAttribute="height" constant="8" id="MRb-Fn-jAK"/>
                                 </constraints>
-                                <color key="trackTintColor" red="0.27963558049999998" green="0.57839427919999997" blue="0.86689336890000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </progressView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezG-8x-I9t">
-                                <rect key="frame" x="155" y="628" width="80" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezG-8x-I9t">
+                                <rect key="frame" x="135" y="680" width="120" height="50"/>
+                                <color key="backgroundColor" red="0.58039218189999997" green="0.85098040100000005" blue="0.41568624970000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="HdI-6t-eLN"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="cN1-WP-mJL"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="cN1-WP-mJL"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Play">
-                                    <fontDescription key="titleFontDescription" name="Papyrus-Condensed" family="Papyrus" pointSize="25"/>
+                                    <fontDescription key="titleFontDescription" name="Papyrus-Condensed" family="Papyrus" pointSize="27"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="playButtonPressed:" destination="a0Z-ds-cbA" eventType="touchUpInside" id="UNy-SV-N6b"/>
@@ -313,17 +313,17 @@
                             <constraint firstItem="Am4-Yd-xqH" firstAttribute="leading" secondItem="4Km-ms-W6C" secondAttribute="leading" constant="5" id="30l-a5-bio"/>
                             <constraint firstAttribute="trailing" secondItem="Am4-Yd-xqH" secondAttribute="trailing" constant="5" id="46t-5N-6ZW"/>
                             <constraint firstItem="Am4-Yd-xqH" firstAttribute="centerX" secondItem="4Km-ms-W6C" secondAttribute="centerX" id="6dG-4M-Djv"/>
-                            <constraint firstItem="fp1-97-4Y4" firstAttribute="trailing" secondItem="2v1-1Q-lwh" secondAttribute="trailing" id="9we-s2-P8p"/>
-                            <constraint firstItem="nV5-LF-okT" firstAttribute="centerY" secondItem="4Km-ms-W6C" secondAttribute="centerY" constant="80" id="Fgx-is-Uir"/>
+                            <constraint firstItem="fp1-97-4Y4" firstAttribute="trailing" secondItem="2v1-1Q-lwh" secondAttribute="trailing" constant="50" id="9we-s2-P8p"/>
+                            <constraint firstItem="Am4-Yd-xqH" firstAttribute="top" secondItem="fp1-97-4Y4" secondAttribute="top" id="EQf-d0-ZVJ"/>
+                            <constraint firstItem="fp1-97-4Y4" firstAttribute="bottom" secondItem="ezG-8x-I9t" secondAttribute="bottom" constant="80" id="GdQ-12-iKt"/>
                             <constraint firstItem="nV5-LF-okT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fp1-97-4Y4" secondAttribute="leading" id="IJp-JQ-ebr"/>
                             <constraint firstItem="nV5-LF-okT" firstAttribute="centerX" secondItem="4Km-ms-W6C" secondAttribute="centerX" id="KdX-eI-Qa3"/>
-                            <constraint firstItem="2v1-1Q-lwh" firstAttribute="top" secondItem="nV5-LF-okT" secondAttribute="bottom" constant="100" id="TnQ-Su-FgT"/>
                             <constraint firstItem="fp1-97-4Y4" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nV5-LF-okT" secondAttribute="trailing" id="a1W-p6-uFz"/>
                             <constraint firstItem="ezG-8x-I9t" firstAttribute="centerX" secondItem="2v1-1Q-lwh" secondAttribute="centerX" id="fbr-Jd-TY9"/>
                             <constraint firstItem="2v1-1Q-lwh" firstAttribute="centerX" secondItem="4Km-ms-W6C" secondAttribute="centerX" id="gaK-bG-8VA"/>
-                            <constraint firstItem="ezG-8x-I9t" firstAttribute="top" secondItem="2v1-1Q-lwh" secondAttribute="top" constant="5" id="jUI-AC-33R"/>
-                            <constraint firstItem="2v1-1Q-lwh" firstAttribute="leading" secondItem="fp1-97-4Y4" secondAttribute="leading" id="lQN-KR-kJN"/>
-                            <constraint firstItem="Am4-Yd-xqH" firstAttribute="centerY" secondItem="4Km-ms-W6C" secondAttribute="centerY" id="xoR-lN-Z5s"/>
+                            <constraint firstItem="ezG-8x-I9t" firstAttribute="top" secondItem="2v1-1Q-lwh" secondAttribute="top" constant="30" id="jUI-AC-33R"/>
+                            <constraint firstItem="2v1-1Q-lwh" firstAttribute="leading" secondItem="fp1-97-4Y4" secondAttribute="leading" constant="50" id="lQN-KR-kJN"/>
+                            <constraint firstItem="nV5-LF-okT" firstAttribute="bottom" secondItem="Am4-Yd-xqH" secondAttribute="bottom" constant="-100" id="pnF-UG-FBJ"/>
                             <constraint firstItem="ezG-8x-I9t" firstAttribute="centerX" secondItem="4Km-ms-W6C" secondAttribute="centerX" id="yPw-xe-rhJ"/>
                         </constraints>
                     </view>

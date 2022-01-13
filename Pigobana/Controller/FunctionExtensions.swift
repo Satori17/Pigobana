@@ -151,6 +151,7 @@ extension PlayVC {
                 })
                 //
                 
+                cardReceivingAnimation(for: player1CardCollectionView)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.openedCardsUI(exist: false)
                     //If both player has cards, main deck of cards is unavailable
@@ -201,5 +202,20 @@ extension PlayVC {
                 }
             }
         }
+    }
+    
+    
+    //NEED TO FIX ______________
+    
+    //Animation when player taking cards
+    func cardReceivingAnimation(for player: UICollectionView) {
+        let animation = CABasicAnimation(keyPath: "position.y")
+        animation.fromValue = openedCards.center
+        animation.toValue = player.center
+        animation.duration = 0.5
+        animation.fillMode = .forwards
+    
+        openedCards.layer.add(animation, forKey: nil)
+        
     }
 }

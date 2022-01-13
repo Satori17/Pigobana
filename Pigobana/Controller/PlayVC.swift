@@ -141,7 +141,6 @@ class PlayVC: UIViewController {
 
 //MARK: - Extensions
 
-
 extension PlayVC: NewGame {
     func startNewGame() {
         self.dismiss(animated: true, completion: nil)
