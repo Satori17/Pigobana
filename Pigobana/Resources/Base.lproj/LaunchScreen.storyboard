@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="NJN-U3-5Se">
+                                <rect key="frame" x="5" y="44" width="380" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="7Fc-0e-o7p"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Game That Every Georgian Knows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="f00-Yg-DhO">
+                                <rect key="frame" x="35" y="302.33333333333331" width="320" height="41.666666666666686"/>
+                                <fontDescription key="fontDescription" name="Papyrus-Condensed" family="Papyrus" pointSize="27"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.27963558049999998" green="0.57839427919999997" blue="0.86689336890000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NJN-U3-5Se" secondAttribute="trailing" constant="5" id="LiX-nd-TYO"/>
+                            <constraint firstItem="NJN-U3-5Se" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Lln-0b-cJM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f00-Yg-DhO" secondAttribute="trailing" id="M3k-ak-3JT"/>
+                            <constraint firstItem="NJN-U3-5Se" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="5" id="YzJ-yg-Rp2"/>
+                            <constraint firstItem="NJN-U3-5Se" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cOn-cr-HNJ"/>
+                            <constraint firstItem="f00-Yg-DhO" firstAttribute="bottom" secondItem="NJN-U3-5Se" secondAttribute="bottom" constant="-100" id="lF3-s0-509"/>
+                            <constraint firstItem="f00-Yg-DhO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rbf-xZ-noC"/>
+                            <constraint firstItem="f00-Yg-DhO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ruy-jE-ReE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Launchscreen" width="333.33334350585938" height="333.33334350585938"/>
+    </resources>
+</document>
