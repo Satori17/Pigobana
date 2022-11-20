@@ -9,7 +9,11 @@ import UIKit
 
 class Player1CardCell: UICollectionViewCell {
     
+    //MARK: - IBOutets
+    
     @IBOutlet weak var player1_cardImageView: UIImageView!
+    
+    //MARK: - Methods
     
     func player1CardUI() {
         player1_cardImageView.layer.cornerRadius = 9

@@ -104,21 +104,21 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
     }
     
     //receiving card image name data
-    func receiveData(of Card: String) {
+    func receiveData(of card: String) {
         //last dealt card
         let previousCard = cardHolder.last
         //flipping from closed cards to open cards
-        flipCard(name: Card)
+        flipCard(name: card)
         //saving opened cards in card holder
-        cardHolder.append(Card)
+        cardHolder.append(card)
         //cards hiders
         cardHiderAnimation(appear: false, with: hidePlayer1CardsView, for: player1Cards)
         cardHiderAnimation(appear: true, with: hidePlayer2CardsView, for: player2Cards)
         //deck hider
-        deckHiderAnimation(appear: false)
+        toggleDeck(hidden: false)
         
         // 1 Player
-        if Card.suffix(1) == previousCard?.suffix(1) {
+        if card.suffix(1) == previousCard?.suffix(1) {
             closedCards.isUserInteractionEnabled = false
             for card in cardHolder {
                 player2Cards.append(card)
@@ -129,7 +129,7 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.95) {
                 self.cardHiderAnimation(appear: true, with: self.hidePlayer2CardsView, for: self.player2Cards)
-                self.openedCardsUI(exist: false)
+                self.openedCardsUI(isAppeared: false)
                 self.player2CardCollectionView.reloadData()
                 self.player2CardCollectionView.isHidden = false
                 
@@ -142,7 +142,7 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
         
         // 2 Player
         playerController = 0
-        if Card.suffix(1) == previousCard?.suffix(1) {
+        if card.suffix(1) == previousCard?.suffix(1) {
             closedCards.isUserInteractionEnabled = false
             for card in cardHolder {
                 player1Cards.append(card)
@@ -153,7 +153,7 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
             player1CardAmount.text = "\(player1Cards.count)"
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.95) {
-                self.openedCardsUI(exist: false)
+                self.openedCardsUI(isAppeared: false)
                 self.player1CardCollectionView.reloadData()
                 self.player1CardCollectionView.isHidden = false
                 //If both player has cards, main deck of cards is unavailable
