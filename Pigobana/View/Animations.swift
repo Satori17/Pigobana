@@ -50,7 +50,7 @@ extension PlayVC {
             if ended == true {
                 self.newCardsArray.isEmpty ? self.closedCards.setImage(nil, for: .normal) : self.closedCards.setImage(ImageKey.blueBackground, for: .normal)
                 self.openedCards.image = UIImage(named: name)
-                self.openedCardsUI(exist: true)
+                self.openedCardsUI(isAppeared: true)
             }
         }
         //animation for card flipping
@@ -83,18 +83,14 @@ extension PlayVC {
         }
     }
     
-    // NEED TO FIX________
-    func deckHiderAnimation(appear: Bool) {
+    //TODO: - FIX
+    func toggleDeck(hidden: Bool) {
         deckHider.frame = closedCards.bounds
         deckHider.backgroundColor = .black
         deckHider.alpha = 0
         closedCards.addSubview(deckHider)
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-            if appear == true {
-                self.deckHider.alpha = 0.4
-            } else if appear == false {
-                self.deckHider.alpha = 0
-            }
+        UIView.animate(withDuration: 0.5, delay: 0.5) { [weak self] in
+            self?.deckHider.alpha = hidden == true ? 0.4 : 0
         }
     }
 }
