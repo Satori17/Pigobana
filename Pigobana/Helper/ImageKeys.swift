@@ -8,5 +8,5 @@
 import UIKit
 
 enum ImageKey {
-    static let blueBackground = UIImage(named: "blue_background")
+    static let blueBackground = "blue_background"
 }

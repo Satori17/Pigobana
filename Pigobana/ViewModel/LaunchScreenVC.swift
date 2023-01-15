@@ -30,12 +30,12 @@ class LaunchScreenVC: UIViewController {
     //MARK: - IBActions
     
     //1 player
-    @IBAction func singlePlayerBtnPressed(_ sender: UIButton) {
+    @IBAction private func singlePlayerBtnPressed(_ sender: UIButton) {
         animationManager.pressingAnimation(sender)
     }
     
     //2 player
-    @IBAction func multiPlayerBtnPressed(_ sender: UIButton) {
+    @IBAction private func multiPlayerBtnPressed(_ sender: UIButton) {
         animationManager.pressingAnimation(sender)
         
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
@@ -49,7 +49,7 @@ class LaunchScreenVC: UIViewController {
     }
     
     //How to play
-    @IBAction func howToPlayBtnPressed(_ sender: UIButton) {
+    @IBAction private func howToPlayBtnPressed(_ sender: UIButton) {
         animationManager.pressingAnimation(sender)
     }
     

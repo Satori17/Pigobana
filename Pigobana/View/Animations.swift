@@ -48,9 +48,9 @@ extension PlayVC {
         //transition closure of flipping card
         let transition = { (_ ended: Bool) -> Void in
             if ended == true {
-                self.newCardsArray.isEmpty ? self.closedCards.setImage(nil, for: .normal) : self.closedCards.setImage(ImageKey.blueBackground, for: .normal)
+                self.newCardsArray.isEmpty ? self.closedCards.setImage(nil, for: .normal) : self.closedCards.setImage(UIImage(named: ImageKey.blueBackground), for: .normal)
                 self.openedCards.image = UIImage(named: name)
-                self.openedCardsUI(isAppeared: true)
+                self.setOpenedCards(appeared: true)
             }
         }
         //animation for card flipping

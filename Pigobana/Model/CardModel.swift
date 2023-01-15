@@ -7,10 +7,6 @@
 
 import UIKit
 
-enum Suit: String, CaseIterable {
-    case hearts, diamonds, clubs, spades, unknown
-}
-
 struct CardModel {
     let name: String
     private var image: UIImage? = nil
