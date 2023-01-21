@@ -8,7 +8,6 @@
 import Foundation
 import MultipeerConnectivity
 
-
 extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
     
     //MARK: - Functions
@@ -129,7 +128,7 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.95) {
                 self.cardHiderAnimation(appear: true, with: self.hidePlayer2CardsView, for: self.player2Cards)
-                self.openedCardsUI(isAppeared: false)
+                self.setOpenedCards(appeared: false)
                 self.player2CardCollectionView.reloadData()
                 self.player2CardCollectionView.isHidden = false
                 
@@ -141,7 +140,6 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
         }
         
         // 2 Player
-        playerController = 0
         if card.suffix(1) == previousCard?.suffix(1) {
             closedCards.isUserInteractionEnabled = false
             for card in cardHolder {
@@ -153,7 +151,7 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
             player1CardAmount.text = "\(player1Cards.count)"
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.95) {
-                self.openedCardsUI(isAppeared: false)
+                self.setOpenedCards(appeared: false)
                 self.player1CardCollectionView.reloadData()
                 self.player1CardCollectionView.isHidden = false
                 //If both player has cards, main deck of cards is unavailable
@@ -187,9 +185,10 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {        
         if let imageData = String(data: data, encoding: .utf8) {
             DispatchQueue.main.async { [weak self] in
-                self?.receiveData(of: imageData)
-                self?.newCardsArray.removeAll(where: {$0.name == imageData})
-                self?.gameOverSegue()
+                guard let self else { return }
+                self.receiveData(of: imageData)
+                self.newCardsArray.removeAll(where: {$0.name == imageData})
+                self.checkGamePosition()
             }
         }
     }

@@ -28,20 +28,16 @@ extension UICollectionView {
     func layoutViews(quantity: [Any]) {
         if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
             switch quantity.count {
-            case 0..<3:
-                layout.itemSize.width = 220
-            case 3..<4:
-                layout.itemSize.width = 150
-            case 4..<5:
+            case 0..<4:
+                layout.itemSize.width = 153
+            case 4..<8:
                 layout.itemSize.width = 110
-            case 5..<8:
-                layout.itemSize.width = 90
             case 8..<10:
-                layout.itemSize.width = 60
+                layout.itemSize.width = 90
             case 10..<14:
-                layout.itemSize.width = 50
+                layout.itemSize.width = 60
             default:
-                layout.itemSize.width = 40
+                layout.itemSize.width = 50
             }
         }
     }

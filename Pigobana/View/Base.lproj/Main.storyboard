@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zd1-4a-8kM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zd1-4a-8kM">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -44,30 +45,30 @@
                                     <constraint firstItem="8cC-Ko-aqT" firstAttribute="leading" secondItem="FST-l6-JMY" secondAttribute="leading" id="lgf-Y1-6zV"/>
                                 </constraints>
                             </stackView>
-                            <collectionView tag="1" contentMode="TopLeft" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BX6-EV-1IA">
-                                <rect key="frame" x="0.0" y="706" width="390" height="138"/>
+                            <collectionView hidden="YES" tag="1" contentMode="TopLeft" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BX6-EV-1IA">
+                                <rect key="frame" x="0.0" y="684" width="390" height="230"/>
                                 <color key="backgroundColor" red="0.11423382560000001" green="0.38541043650000001" blue="0.068355514919999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="7IF-oO-zyb">
-                                    <size key="itemSize" width="220" height="128"/>
+                                    <size key="itemSize" width="153" height="230"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" reuseIdentifier="Player1CardCell" id="sUJ-cX-b6q" customClass="Player1CardCell" customModule="Pigobana" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="11.666666666666666" width="220" height="115"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="153" height="230"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oUx-ge-d2i">
-                                            <rect key="frame" x="0.0" y="0.0" width="220" height="115"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="153" height="230"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="10C" adjustsImageSizeForAccessibilityContentSizeCategory="YES" id="7Ow-zs-y7q">
-                                                    <rect key="frame" x="0.0" y="0.0" width="220" height="135"/>
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="10C" adjustsImageSizeForAccessibilityContentSizeCategory="YES" id="7Ow-zs-y7q">
+                                                    <rect key="frame" x="0.0" y="0.0" width="153" height="230"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="220" height="115"/>
+                                        <size key="customSize" width="153" height="230"/>
                                         <connections>
                                             <outlet property="player1_cardImageView" destination="7Ow-zs-y7q" id="Kma-Wg-bMC"/>
                                         </connections>
@@ -78,30 +79,30 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="paD-kD-xjH"/>
                                 </connections>
                             </collectionView>
-                            <collectionView tag="2" contentMode="bottomRight" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3wl-zc-BQA" userLabel="Player2 Card Collection View">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="138"/>
+                            <collectionView hidden="YES" tag="2" contentMode="bottomRight" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3wl-zc-BQA" userLabel="Player2 Card Collection View">
+                                <rect key="frame" x="0.0" y="-70" width="390" height="230"/>
                                 <color key="backgroundColor" red="0.11423382560000001" green="0.38541043650000001" blue="0.068355514919999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="Jdu-gt-bpv">
-                                    <size key="itemSize" width="220" height="128"/>
+                                    <size key="itemSize" width="153" height="230"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" reuseIdentifier="Player2CardCell" id="XGf-VA-Y73" customClass="Player2CardCell" customModule="Pigobana" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="11.666666666666666" width="220" height="115"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="153" height="230"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gkp-6C-E4a">
-                                            <rect key="frame" x="0.0" y="0.0" width="220" height="115"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="153" height="230"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="7C" translatesAutoresizingMaskIntoConstraints="NO" id="FRp-uB-8W2" userLabel="Received Card Image 2">
-                                                    <rect key="frame" x="0.0" y="0.0" width="220" height="135"/>
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="7C" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FRp-uB-8W2" userLabel="Received Card Image 2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="153" height="230"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="220" height="115"/>
+                                        <size key="customSize" width="153" height="230"/>
                                         <connections>
                                             <outlet property="player2_cardImageView" destination="FRp-uB-8W2" id="RMZ-ln-G1t"/>
                                         </connections>
@@ -113,17 +114,17 @@
                                 </connections>
                             </collectionView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uwi-Yn-m72">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="197"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="209"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="point 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kCY-Kd-zvU" userLabel="player2 card amount">
-                                        <rect key="frame" x="14.999999999999996" y="168" width="60.666666666666657" height="24"/>
+                                        <rect key="frame" x="14.999999999999996" y="180" width="60.666666666666657" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="1" height="-1"/>
                                     </label>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Turn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BN-YI-Ycp">
-                                        <rect key="frame" x="153.33333333333334" y="168" width="83.666666666666657" height="24"/>
+                                        <rect key="frame" x="153.33333333333334" y="180" width="83.666666666666657" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -139,7 +140,7 @@
                                 </constraints>
                             </view>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qu1-Yx-ar2" userLabel="Hide Player1 Cards View">
-                                <rect key="frame" x="0.0" y="647" width="390" height="197"/>
+                                <rect key="frame" x="0.0" y="635" width="390" height="209"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="point 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="fDU-Br-QgC" userLabel="player1 card amount">
                                         <rect key="frame" x="15" y="5" width="58" height="24"/>
@@ -170,10 +171,10 @@
                         <constraints>
                             <constraint firstItem="YAU-n9-REH" firstAttribute="trailing" secondItem="FST-l6-JMY" secondAttribute="trailing" id="0gW-2n-2OK"/>
                             <constraint firstItem="FST-l6-JMY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3Du-GY-X18"/>
-                            <constraint firstItem="3wl-zc-BQA" firstAttribute="height" secondItem="uwi-Yn-m72" secondAttribute="height" multiplier="0.7" id="9y6-87-bNd"/>
+                            <constraint firstItem="3wl-zc-BQA" firstAttribute="height" secondItem="uwi-Yn-m72" secondAttribute="height" multiplier="1.1" id="9y6-87-bNd"/>
                             <constraint firstAttribute="trailing" secondItem="Qu1-Yx-ar2" secondAttribute="trailing" id="FaQ-LO-P7U"/>
                             <constraint firstItem="3wl-zc-BQA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GfN-HR-ReJ"/>
-                            <constraint firstItem="BX6-EV-1IA" firstAttribute="height" secondItem="Qu1-Yx-ar2" secondAttribute="height" multiplier="0.7" id="IBc-75-mFp"/>
+                            <constraint firstItem="BX6-EV-1IA" firstAttribute="height" secondItem="Qu1-Yx-ar2" secondAttribute="height" multiplier="1.1" id="IBc-75-mFp"/>
                             <constraint firstAttribute="trailing" secondItem="3wl-zc-BQA" secondAttribute="trailing" id="PF4-hW-ekO"/>
                             <constraint firstAttribute="bottom" secondItem="Qu1-Yx-ar2" secondAttribute="bottom" id="Q2l-iN-pLf"/>
                             <constraint firstItem="3wl-zc-BQA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Scm-H2-S6l"/>
@@ -185,13 +186,13 @@
                             <constraint firstItem="YAU-n9-REH" firstAttribute="top" secondItem="FST-l6-JMY" secondAttribute="top" id="f2X-TU-mXO"/>
                             <constraint firstItem="FST-l6-JMY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iJh-1c-41E"/>
                             <constraint firstAttribute="trailing" secondItem="BX6-EV-1IA" secondAttribute="trailing" id="iJp-N6-nVP"/>
-                            <constraint firstAttribute="bottom" secondItem="BX6-EV-1IA" secondAttribute="bottom" id="lJw-ZV-zLY"/>
+                            <constraint firstAttribute="bottom" secondItem="BX6-EV-1IA" secondAttribute="bottom" constant="-70" id="lJw-ZV-zLY"/>
                             <constraint firstAttribute="trailing" secondItem="uwi-Yn-m72" secondAttribute="trailing" id="mYk-qz-IOZ"/>
                             <constraint firstItem="BX6-EV-1IA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mtC-Vt-K1F"/>
                             <constraint firstItem="uwi-Yn-m72" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="oSw-K3-um9"/>
-                            <constraint firstItem="BX6-EV-1IA" firstAttribute="height" secondItem="FST-l6-JMY" secondAttribute="height" multiplier="0.6" id="p4m-Zp-pwD"/>
+                            <constraint firstItem="BX6-EV-1IA" firstAttribute="height" secondItem="FST-l6-JMY" secondAttribute="height" id="p4m-Zp-pwD"/>
                             <constraint firstItem="bwu-iT-YYU" firstAttribute="width" secondItem="YAU-n9-REH" secondAttribute="width" id="uDn-Fy-QQQ"/>
-                            <constraint firstItem="3wl-zc-BQA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xtM-gN-l53"/>
+                            <constraint firstItem="3wl-zc-BQA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-70" id="xtM-gN-l53"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
@@ -202,6 +203,7 @@
                         <outlet property="deckOfCards" destination="YAU-n9-REH" id="V2M-eZ-opy"/>
                         <outlet property="hidePlayer1CardsView" destination="Qu1-Yx-ar2" id="N8b-A5-L55"/>
                         <outlet property="hidePlayer2CardsView" destination="uwi-Yn-m72" id="FNO-bZ-YHd"/>
+                        <outlet property="mainCardsStackView" destination="FST-l6-JMY" id="EQh-Ym-lbn"/>
                         <outlet property="openedCards" destination="8cC-Ko-aqT" id="vhA-TH-PXn"/>
                         <outlet property="player1CardAmount" destination="fDU-Br-QgC" id="p7j-hR-cbM"/>
                         <outlet property="player1CardCollectionView" destination="BX6-EV-1IA" id="Mkr-qy-xYR"/>
@@ -246,7 +248,7 @@
                                 <size key="shadowOffset" width="2" height="-2"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vaI-A0-wkp">
-                                <rect key="frame" x="0.0" y="243.99999999999997" width="390" height="77.666666666666657"/>
+                                <rect key="frame" x="0.0" y="246.99999999999997" width="390" height="77.666666666666657"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="65"/>
                                 <color key="textColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -287,19 +289,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Game That Every Georgian Knows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="nV5-LF-okT">
-                                <rect key="frame" x="35" y="302.33333333333331" width="320" height="41.666666666666686"/>
+                                <rect key="frame" x="35" y="305.33333333333331" width="320" height="41.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Papyrus-Condensed" family="Papyrus" pointSize="27"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="Am4-Yd-xqH">
-                                <rect key="frame" x="5" y="44" width="380" height="400"/>
+                                <rect key="frame" x="5" y="47" width="380" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="jeZ-bc-iPR"/>
                                 </constraints>
                             </imageView>
                             <progressView opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2v1-1Q-lwh">
-                                <rect key="frame" x="50" y="374" width="290" height="8"/>
+                                <rect key="frame" x="50" y="377" width="290" height="8"/>
                                 <color key="tintColor" red="0.58039218189999997" green="0.84705877299999999" blue="0.41568624970000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="8" id="MRb-Fn-jAK"/>
@@ -390,7 +392,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a1d-5v-jQR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1049" y="75"/>
+            <point key="canvasLocation" x="443" y="75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zku-gw-KA4">
@@ -409,7 +411,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWz-C3-hKO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="191" y="75"/>
+            <point key="canvasLocation" x="-334" y="75"/>
         </scene>
     </scenes>
     <resources>
