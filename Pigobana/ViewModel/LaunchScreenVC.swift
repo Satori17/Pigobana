@@ -7,13 +7,13 @@
 
 import UIKit
 
-class LaunchScreenVC: UIViewController {
+final class LaunchScreenVC: UIViewController {
     
     //MARK: - IBOutlets
-    @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var singlePlayerBtn: UIButton!
-    @IBOutlet weak var multiPlayerBtn: UIButton!
-    @IBOutlet weak var howToPlayBtn: UIButton!
+    @IBOutlet private weak var progressView: UIProgressView!
+    @IBOutlet private weak var singlePlayerBtn: UIButton!
+    @IBOutlet private weak var multiPlayerBtn: UIButton!
+    @IBOutlet private weak var howToPlayBtn: UIButton!
     
     //MARK: - Managers
     private var animationManager = AnimationManager()
