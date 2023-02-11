@@ -90,6 +90,7 @@ final class PlayVC: UIViewController {
     
     @IBAction private func closedCardButtonPressed(_ sender: UIButton) {
         let currentCard = getLastCard()
+        sender.isUserInteractionEnabled = false
         controlPlayersAndCards(currentCard: currentCard)
         //TODO: - FIX  uncomment this
         sendData(of: currentCard.name)
@@ -144,6 +145,7 @@ final class PlayVC: UIViewController {
         }
     }
     
+    // MARK: - Control Players and Cards
     //TODO: - FIX  this method should be modified and logic sharpened
     private func controlPlayersAndCards(currentCard: CardModel) {
         //last dealt card
@@ -163,7 +165,6 @@ final class PlayVC: UIViewController {
         // 1 Player
         if isPlayer1 {
             if currentCard.suit == previousCard?.suit {
-                closedCards.isUserInteractionEnabled = false
                 cardHolder.forEach {
                     player1Cards.append($0)
                     cardHolder.removeFirst()
@@ -179,11 +180,7 @@ final class PlayVC: UIViewController {
                     self.setOpenedCards(appeared: false)
                     self.updateDataSource(animated: true)
                     self.player1CardCollectionView.isHidden = false
-                    
-                    //If both player has cards, main deck of cards is unavailable
-                    if self.player2Cards.isEmpty {
-                        self.closedCards.isUserInteractionEnabled = true
-                    }
+                    self.closedCards.isUserInteractionEnabled =  self.player2Cards.isEmpty ? false : true
                 }
             }
             // 2 Player
@@ -191,9 +188,7 @@ final class PlayVC: UIViewController {
             isPlayer1 = true
             //TODO: - FIX  uncomment this
             cardHiderAnimation(appear: false, with: hidePlayer2CardsView, for: player2Cards)
-            
             if currentCard.suit == previousCard?.suit {
-                closedCards.isUserInteractionEnabled = false
                 cardHolder.forEach {
                     player2Cards.append($0)
                     cardHolder.removeFirst()
@@ -209,11 +204,7 @@ final class PlayVC: UIViewController {
                     self.setOpenedCards(appeared: false)
                     self.updateDataSource(animated: true)
                     self.player2CardCollectionView.isHidden = false
-                    
-                    //If both player has cards, main deck of cards is unavailable
-                    if self.player1Cards.isEmpty {
-                        self.closedCards.isUserInteractionEnabled = true
-                    }
+                    self.closedCards.isUserInteractionEnabled =  self.player1Cards.isEmpty ? false : true
                 }
             }
         }
@@ -225,6 +216,7 @@ final class PlayVC: UIViewController {
 extension PlayVC: NewGameDelegate {
     func startNewGame() {
         self.dismiss(animated: true, completion: nil)
+        closedCards.isUserInteractionEnabled = true
         player1CardCollectionView.isHidden = true
         player2CardCollectionView.isHidden = true
         hidePlayer1CardsView.isHidden = true
@@ -274,13 +266,9 @@ extension PlayVC: UICollectionViewDelegate {
                 self.removeDataSourceItem(at: indexPath)
                 self.player1CardAmount.text = "\(self.player1Cards.count)"
                 //TODO: - FIX  uncomment this
+                self.toggleDeck(hidden: true)
                 self.cardHiderAnimation(appear: true, with: self.hidePlayer1CardsView, for: self.player1Cards)
                 self.cardHiderAnimation(appear: false, with: self.hidePlayer2CardsView, for: self.player2Cards)
-                
-                //TODO: - FIX  this logic!!!!!!!
-                if (self.player1Cards.isEmpty && self.player2Cards.isEmpty) || self.player1Cards.isEmpty {
-                    self.closedCards.isUserInteractionEnabled = true
-                }
                 
                 if !self.isPlayer1 {
                     self.isPlayer1 = true
@@ -291,7 +279,7 @@ extension PlayVC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - DataSource
+// MARK: - CollectionView diffableDataSource
 
 private extension PlayVC {
     func makeDataSource(for collectionView: UICollectionView, with cell: UICollectionViewCell.Type) -> CardModel.DataSource {
@@ -447,14 +435,12 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
         //cards hiders
         //TODO: - FIX  uncomment this
         cardHiderAnimation(appear: false, with: hidePlayer1CardsView, for: player1Cards)
-        cardHiderAnimation(appear: true, with: hidePlayer2CardsView, for: player2Cards)
-        
+        cardHiderAnimation(appear: true, with: hidePlayer2CardsView, for: player2Cards)        
         //deck hider
         toggleDeck(hidden: false)
         
         // 1 Player
         if card.suit == previousCard?.suit {
-            closedCards.isUserInteractionEnabled = false
             cardHolder.forEach {
                 player2Cards.append($0)
                 cardHolder.removeFirst()
@@ -469,17 +455,11 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
                 self.setOpenedCards(appeared: false)
                 self.updateDataSource(animated: true)
                 self.player2CardCollectionView.isHidden = false
-                
-                //If both player has cards, main deck of cards is unavailable
-                if self.player1Cards.isEmpty {
-                    self.closedCards.isUserInteractionEnabled = true
-                }
+                self.closedCards.isUserInteractionEnabled =  self.player1Cards.isEmpty ? false : true
             }
         }
-        
         // 2 Player
         if card.suit == previousCard?.suit {
-            closedCards.isUserInteractionEnabled = false
             cardHolder.forEach {
                 player2Cards.append($0)
                 cardHolder.removeFirst()
@@ -492,11 +472,7 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
                 self.setOpenedCards(appeared: false)
                 self.updateDataSource(animated: true)
                 self.player1CardCollectionView.isHidden = false
-                
-                //If both player has cards, main deck of cards is unavailable
-                if self.player2Cards.isEmpty {
-                    self.closedCards.isUserInteractionEnabled = true
-                }
+                self.closedCards.isUserInteractionEnabled =  self.player2Cards.isEmpty ? false : true
             }
         }
     }
