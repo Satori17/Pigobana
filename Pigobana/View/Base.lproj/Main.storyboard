@@ -74,10 +74,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="hC7-wD-tvl"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="paD-kD-xjH"/>
-                                </connections>
                             </collectionView>
                             <collectionView hidden="YES" tag="2" contentMode="bottomRight" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3wl-zc-BQA" userLabel="Player2 Card Collection View">
                                 <rect key="frame" x="0.0" y="-70" width="390" height="230"/>
@@ -108,10 +104,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Qsq-bD-s0Q"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="JOi-Jp-ENI"/>
-                                </connections>
                             </collectionView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uwi-Yn-m72">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="209"/>
@@ -228,10 +220,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="Ihq-Ou-3Jd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="29"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                 <inset key="titleEdgeInsets" minX="-5" minY="-16" maxX="0.0" maxY="0.0"/>
-                                <size key="titleShadowOffset" width="2" height="-1"/>
-                                <state key="normal" title="Press" backgroundImage="Play_Again_Button">
+                                <size key="titleShadowOffset" width="1" height="-1"/>
+                                <state key="normal" title="Play again" backgroundImage="Play_Again_Button">
                                     <color key="titleColor" red="0.46274507050000002" green="0.8392156959" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -239,14 +231,6 @@
                                     <action selector="playAgainBtn:" destination="P5h-Fj-AVc" eventType="touchUpInside" id="azF-qB-fcW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play again?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcR-QZ-ZW1">
-                                <rect key="frame" x="83" y="616.66666666666663" width="224" height="48.333333333333371"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="40"/>
-                                <color key="textColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <size key="shadowOffset" width="2" height="-2"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vaI-A0-wkp">
                                 <rect key="frame" x="0.0" y="246.99999999999997" width="390" height="77.666666666666657"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="65"/>
@@ -260,10 +244,8 @@
                         <color key="backgroundColor" red="0.11423382560000001" green="0.38541043650000001" blue="0.068355514919999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="vaI-A0-wkp" firstAttribute="centerX" secondItem="t3K-Km-yaj" secondAttribute="centerX" id="0PO-K5-7RH"/>
-                            <constraint firstItem="qcR-QZ-ZW1" firstAttribute="centerX" secondItem="t3K-Km-yaj" secondAttribute="centerX" id="3Dh-z1-mOc"/>
                             <constraint firstItem="0Ul-sY-LWG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jgm-Jk-Zqb" secondAttribute="leading" constant="122" id="CCu-ca-5aJ"/>
                             <constraint firstItem="vaI-A0-wkp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="t3K-Km-yaj" secondAttribute="leading" id="Dwd-JS-xKQ"/>
-                            <constraint firstItem="0Ul-sY-LWG" firstAttribute="top" secondItem="qcR-QZ-ZW1" secondAttribute="bottom" constant="25" id="LCq-q2-PyM"/>
                             <constraint firstItem="jgm-Jk-Zqb" firstAttribute="trailing" secondItem="0Ul-sY-LWG" secondAttribute="trailing" constant="122" id="U4o-IR-oJC"/>
                             <constraint firstItem="0Ul-sY-LWG" firstAttribute="centerX" secondItem="t3K-Km-yaj" secondAttribute="centerX" id="hzp-YE-9WO"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vaI-A0-wkp" secondAttribute="trailing" id="ij8-JF-AUf"/>

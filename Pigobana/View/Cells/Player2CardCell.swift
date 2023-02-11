@@ -7,10 +7,10 @@
 
 import UIKit
 
-class Player2CardCell: UICollectionViewCell {
+final class Player2CardCell: UICollectionViewCell {
     //MARK: - IBOutlets
     
-    @IBOutlet weak var player2_cardImageView: UIImageView!
+    @IBOutlet private weak var player2_cardImageView: UIImageView!
     
     //MARK: - Setup
     
@@ -26,6 +26,11 @@ class Player2CardCell: UICollectionViewCell {
         //DispatchQueue.main.async { [weak self] in
             //self.transform = CGAffineTransform(scaleX: 1,y: -1)
         //}
+    }
+    
+    func setup() {
+        player2_cardImageView.image = UIImage(named: ImageKey.blueBackground)
+        player2CardUI()
     }
     
     //MARK: - Private methods

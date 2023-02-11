@@ -9,7 +9,7 @@ import UIKit
 
 extension UIView {
     
-    func setGradient(maskLayer: CAGradientLayer, forPlayer player: Int) {
+    public func setGradient(maskLayer: CAGradientLayer, forPlayer player: Int) {
         self.layer.cornerRadius = 30
         self.layer.maskedCorners = player == 1 ? [.topLeft, .topRight] : [.bottomLeft, .bottomRight]
         maskLayer.frame = self.bounds
@@ -18,13 +18,13 @@ extension UIView {
         self.layer.mask = maskLayer
     }
     
-    func setCurvedFrame() {
+    public func setCurvedFrame() {
         self.layer.cornerRadius = 9
         self.layer.borderColor = ColorKey.white
         self.layer.borderWidth = (self.frame.width) / 30
     }
     
-    func removeCurvedFrame() {
+    public func removeCurvedFrame() {
         self.backgroundColor = nil
         self.layer.cornerRadius = 0
         self.layer.borderColor = ColorKey.clear

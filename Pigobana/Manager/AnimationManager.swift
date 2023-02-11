@@ -32,4 +32,10 @@ final class AnimationManager: NSObject, CAAnimationDelegate {
             completion()
         }
     }
+    
+    func reorderAnimation(for cards: [CardModel], on collectionView: UICollectionView) {
+        UIView.animate(withDuration: 0.2) {
+            collectionView.layoutViews(quantity: cards)
+        }
+    }
 }
