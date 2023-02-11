@@ -13,19 +13,23 @@ extension UICollectionViewCell {
 }
 
 extension UICollectionView {
-    func registerNib<T: UICollectionViewCell>(class: T.Type) {
+    public func registerNib<T: UICollectionViewCell>(class: T.Type) {
         self.register(T.nibFile, forCellWithReuseIdentifier: T.identifier)
     }
     
-    func dequeueReusableCell<Cell: UICollectionViewCell>(forIndexPath indexPath: IndexPath) -> Cell {
-        let identifier = String(describing: Cell.self)
-        guard let cell = self.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? Cell else {
-            fatalError("Error happened for cell id: \(identifier) at \(indexPath))")
-        }
-        return cell
+    public func dequeueReusableCell<T: UICollectionViewCell>(fromClass type: T.Type, for indexPath: IndexPath) -> T {
+        dequeueReusableCell(withReuseIdentifier: String(describing: type), for: indexPath) as? T ?? T()
     }
     
-    func layoutViews(quantity: [Any]) {
+//    public func dequeueReusableCell<Cell: UICollectionViewCell>(forIndexPath indexPath: IndexPath) -> Cell {
+//        let identifier = String(describing: Cell.self)
+//        guard let cell = self.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? Cell else {
+//            fatalError("Error happened for cell id: \(identifier) at \(indexPath))")
+//        }
+//        return cell
+//    }
+    
+    public func layoutViews(quantity: [Any]) {
         if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
             switch quantity.count {
             case 0..<4:

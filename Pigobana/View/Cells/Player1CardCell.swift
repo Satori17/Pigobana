@@ -7,10 +7,10 @@
 
 import UIKit
 
-class Player1CardCell: UICollectionViewCell {
+final class Player1CardCell: UICollectionViewCell {
     //MARK: - IBOutets
     
-    @IBOutlet weak var player1_cardImageView: UIImageView!
+    @IBOutlet private weak var player1_cardImageView: UIImageView!
     
     //MARK: - Setup
     
@@ -18,6 +18,11 @@ class Player1CardCell: UICollectionViewCell {
         guard model.count > 0 else { return }
         let currentCard = model[indexPath.row]
         player1_cardImageView.image = UIImage(named: currentCard)
+        player1CardUI()
+    }
+    
+    func setup(with model: String) {
+        player1_cardImageView.image = UIImage(named: model)
         player1CardUI()
     }
     

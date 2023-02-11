@@ -17,7 +17,7 @@ extension PlayVC {
     }
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?){
         if motion == .motionShake {
-            newCardsArray.shuffle()
+            cards.shuffle()
             
             //animation for card shaking
             let animation = CAKeyframeAnimation()
@@ -48,7 +48,7 @@ extension PlayVC {
         //transition closure of flipping card
         let transition = { (_ ended: Bool) -> Void in
             if ended == true {
-                self.newCardsArray.isEmpty ? self.closedCards.setImage(nil, for: .normal) : self.closedCards.setImage(UIImage(named: ImageKey.blueBackground), for: .normal)
+                self.cards.isEmpty ? self.closedCards.setImage(nil, for: .normal) : self.closedCards.setImage(UIImage(named: ImageKey.blueBackground), for: .normal)
                 self.openedCards.image = UIImage(named: name)
                 self.setOpenedCards(appeared: true)
             }
@@ -58,7 +58,7 @@ extension PlayVC {
     }
     
     // Animation when player deals card
-    func cardReceivingAnimation(to direction: [String]) {
+    func cardReceivingAnimation(to direction: [CardModel]) {
         let animation = CABasicAnimation(keyPath: AnimationKey.positionY)
         animation.fromValue = openedCards.frame.midY
         animation.toValue = direction == player1Cards ? player1CardCollectionView.frame.midY : -player1CardCollectionView.frame.midY
@@ -71,7 +71,7 @@ extension PlayVC {
         }
     }
     
-    func cardHiderAnimation(appear: Bool, with hider: UIView, for playerCards: [String]) {
+    func cardHiderAnimation(appear: Bool, with hider: UIView, for playerCards: [CardModel]) {
         if appear == true && !playerCards.isEmpty {
             UIView.animate(withDuration: 0.8, animations: {
                 hider.alpha = 0.7

@@ -7,10 +7,14 @@
 
 import UIKit
 
+enum Section {
+    case playerHolder
+}
+
 struct CardModel {
     let name: String
-    private var image: UIImage? = nil
     var suit: Suit = .unknown
+    private var image: UIImage? = nil
     
     init(name: String) {
         self.name = name
@@ -28,5 +32,20 @@ struct CardModel {
             }
         }
         return .unknown
+    }
+}
+
+// MARK: - CardModel + Hashable
+
+extension CardModel: Hashable {
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, CardModel>
+    typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, CardModel>
+    
+    static func == (lhs: CardModel, rhs: CardModel) -> Bool {
+        return lhs.name == rhs.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
     }
 }
