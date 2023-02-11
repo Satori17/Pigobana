@@ -85,6 +85,7 @@ extension PlayVC {
     
     //TODO: - FIX
     func toggleDeck(hidden: Bool) {
+        guard !cards.isEmpty else { return }
         deckHider.frame = closedCards.bounds
         deckHider.backgroundColor = .black
         deckHider.alpha = 0

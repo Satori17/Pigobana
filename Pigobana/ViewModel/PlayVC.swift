@@ -236,6 +236,7 @@ extension PlayVC: NewGameDelegate {
         cards = cardsWorker?.getCards() ?? []
         setOpenedCards(appeared: false)
         setClosedCards(appeared: true)
+        toggleDeck(hidden: false)
     }
 }
 
