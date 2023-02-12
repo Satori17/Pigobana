@@ -473,4 +473,5 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
  21. resolve issue when opponents cards are not changing accordingly✅
  22. fix deck of cards ability to be pressable in right logic.✅
  23. refactor and sharpen the CODE!
+ 24. card hiders does not work when press "play again" (new game).
  */
