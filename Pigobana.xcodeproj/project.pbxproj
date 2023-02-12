@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0D440729998CE9009FF9E4 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D440629998CE9009FF9E4 /* DataSource.swift */; };
 		4ED070E9297EB1D200E6C67A /* CardsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED070E8297EB1D200E6C67A /* CardsWorker.swift */; };
 		582E70EE27AEA7B0008F5005 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582E70ED27AEA7B0008F5005 /* Animations.swift */; };
-		583BBAEA279D4EE600075953 /* 1_PlayerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583BBAE9279D4EE600075953 /* 1_PlayerMode.swift */; };
 		583CA413269CD5C9004004D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583CA412269CD5C9004004D9 /* AppDelegate.swift */; };
 		583CA417269CD5C9004004D9 /* PlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583CA416269CD5C9004004D9 /* PlayVC.swift */; };
 		583CA41A269CD5C9004004D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 583CA418269CD5C9004004D9 /* Main.storyboard */; };
@@ -35,9 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E0D440629998CE9009FF9E4 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		4ED070E8297EB1D200E6C67A /* CardsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsWorker.swift; sourceTree = "<group>"; };
 		582E70ED27AEA7B0008F5005 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
-		583BBAE9279D4EE600075953 /* 1_PlayerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 1_PlayerMode.swift; sourceTree = "<group>"; };
 		583CA40F269CD5C9004004D9 /* Pigobana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pigobana.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		583CA412269CD5C9004004D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		583CA416269CD5C9004004D9 /* PlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVC.swift; sourceTree = "<group>"; };
@@ -121,8 +121,8 @@
 			children = (
 				58A5D86C278D79F80032C744 /* LaunchScreenVC.swift */,
 				583CA416269CD5C9004004D9 /* PlayVC.swift */,
+				4E0D440629998CE9009FF9E4 /* DataSource.swift */,
 				589C21C926A6A462003C8251 /* GameOverVC.swift */,
-				583BBAE9279D4EE600075953 /* 1_PlayerMode.swift */,
 				4ED070E8297EB1D200E6C67A /* CardsWorker.swift */,
 			);
 			path = ViewModel;
@@ -270,7 +270,6 @@
 				583CA417269CD5C9004004D9 /* PlayVC.swift in Sources */,
 				4ED070E9297EB1D200E6C67A /* CardsWorker.swift in Sources */,
 				58A5D86D278D79F80032C744 /* LaunchScreenVC.swift in Sources */,
-				583BBAEA279D4EE600075953 /* 1_PlayerMode.swift in Sources */,
 				58B53FFE28DBAEBB008FD5B1 /* MCSessionHelper.swift in Sources */,
 				58B53FF928DBA7BC008FD5B1 /* AnimationManager.swift in Sources */,
 				58E39FE928DDBE1E00AF6494 /* AnimationKeys.swift in Sources */,
@@ -287,6 +286,7 @@
 				583DA82926C088EC003217B0 /* Player2CardCell.swift in Sources */,
 				584A8AAD28E10B2300177805 /* UIView+Extension.swift in Sources */,
 				58CFFCDB279A3C2C00E5256D /* SceneDelegate.swift in Sources */,
+				4E0D440729998CE9009FF9E4 /* DataSource.swift in Sources */,
 				584A8AB128E10CAA00177805 /* ColorKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
