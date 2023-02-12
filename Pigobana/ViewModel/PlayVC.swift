@@ -9,14 +9,13 @@ import UIKit
 import MultipeerConnectivity
 
 final class PlayVC: UIViewController {
-    
     //MARK: - IBOutlets
     
     //opened and closed cards
     @IBOutlet weak var openedCards: UIImageView!
     @IBOutlet weak var closedCards: UIButton!
     @IBOutlet weak var deckOfCards: UIImageView!
-    @IBOutlet private weak var mainCardsStackView: UIStackView!
+    @IBOutlet weak var mainCardsStackView: UIStackView!
     //Collection views
     @IBOutlet weak var player1CardCollectionView: UICollectionView!
     @IBOutlet weak var player2CardCollectionView: UICollectionView!
@@ -29,7 +28,7 @@ final class PlayVC: UIViewController {
     
     //MARK: - Manager
     
-    private var animationManager = AnimationManager()
+    var animationManager = AnimationManager()
     
     //MARK: - Gradient layer
     
@@ -53,8 +52,8 @@ final class PlayVC: UIViewController {
     
     //MARK: - Cards data
     
-    private var player1DataSource: CardModel.DataSource!
-    private var player2DataSource: CardModel.DataSource!
+    var player1DataSource: CardModel.DataSource!
+    var player2DataSource: CardModel.DataSource!
     
     // MARK: - Manipulatable data
     
@@ -62,7 +61,7 @@ final class PlayVC: UIViewController {
     private var cardsWorker: CardsWorkerProtocol?
     // Received cards array
     var player1Cards = [CardModel]()
-    private var player2Cards = [CardModel]()
+    var player2Cards = [CardModel]()
     // Received cards holder
     private var cardHolder: [CardModel] = []
     //Cards Data
@@ -144,18 +143,40 @@ final class PlayVC: UIViewController {
         }
     }
     
+    private func update(isPlayer1: Bool) {
+        cardHolder.forEach {
+            isPlayer1 ? player1Cards.append($0) : player2Cards.append($0)
+            cardHolder.removeFirst()
+        }
+    }
+    
+    private func deliverCards(forPlayer1: Bool, special: Bool = false) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.95) { [weak self] in
+            guard let self else { return }
+            //TODO: - FIX  uncomment this
+            if !special {
+                self.hide(cards: true, forPlayer1: forPlayer1)
+            }
+            self.setOpenedCards(appeared: false)
+            self.updateDataSource(animated: true)
+            let collectionView = forPlayer1 ? self.player1CardCollectionView : self.player2CardCollectionView
+            collectionView?.isHidden = false
+        }
+    }
+    
+    // MARK: - Control Players and Cards
     //TODO: - FIX  this method should be modified and logic sharpened
     private func controlPlayersAndCards(currentCard: CardModel) {
         //last dealt card
         let previousCard = cardHolder.last
         //flipping from closed cards to open cards
-        flipCard(name: currentCard.name)
+        flip(card: currentCard)
         //saving opened cards in card holder
         cardHolder.append(currentCard)
         //cards hiders
         //TODO: - FIX  uncomment this
-        cardHiderAnimation(appear: false, with: hidePlayer1CardsView, for: player1Cards)
-        cardHiderAnimation(appear: false, with: hidePlayer2CardsView, for: player2Cards)
+        hide(cards: false, forPlayer1: true)
+        hide(cards: false, forPlayer1: false)
         //deck hider
         //TODO: - FIX  uncomment this
         toggleDeck(hidden: true)
@@ -163,58 +184,23 @@ final class PlayVC: UIViewController {
         // 1 Player
         if isPlayer1 {
             if currentCard.suit == previousCard?.suit {
-                closedCards.isUserInteractionEnabled = false
-                cardHolder.forEach {
-                    player1Cards.append($0)
-                    cardHolder.removeFirst()
-                }
+                update(isPlayer1: true)
                 //card receiving
-                cardReceivingAnimation(to: player1Cards)
+                receive(cardTo: player1Cards)
                 player1CardAmount.text = "\(player1Cards.count)"
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.95) { [weak self] in
-                    guard let self else { return }
-                    //TODO: - FIX  uncomment this
-                    self.cardHiderAnimation(appear: true, with: self.hidePlayer1CardsView, for: self.player1Cards)
-                    
-                    self.setOpenedCards(appeared: false)
-                    self.updateDataSource(animated: true)
-                    self.player1CardCollectionView.isHidden = false
-                    
-                    //If both player has cards, main deck of cards is unavailable
-                    if self.player2Cards.isEmpty {
-                        self.closedCards.isUserInteractionEnabled = true
-                    }
-                }
+                deliverCards(forPlayer1: true)
             }
             // 2 Player
         } else if !isPlayer1 {
             isPlayer1 = true
             //TODO: - FIX  uncomment this
-            cardHiderAnimation(appear: false, with: hidePlayer2CardsView, for: player2Cards)
-            
+            hide(cards: false, forPlayer1: false)
             if currentCard.suit == previousCard?.suit {
-                closedCards.isUserInteractionEnabled = false
-                cardHolder.forEach {
-                    player2Cards.append($0)
-                    cardHolder.removeFirst()
-                }
+                update(isPlayer1: false)
                 //card receiving
-                cardReceivingAnimation(to: player2Cards)
+                receive(cardTo: player2Cards)
                 player2CardAmount.text = "\(player2Cards.count)"
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.95) { [weak self] in
-                    guard let self else { return }
-                    //TODO: - FIX  uncomment this
-                    self.cardHiderAnimation(appear: true, with: self.hidePlayer2CardsView, for: self.player2Cards)
-                    self.setOpenedCards(appeared: false)
-                    self.updateDataSource(animated: true)
-                    self.player2CardCollectionView.isHidden = false
-                    
-                    //If both player has cards, main deck of cards is unavailable
-                    if self.player1Cards.isEmpty {
-                        self.closedCards.isUserInteractionEnabled = true
-                    }
-                }
+                deliverCards(forPlayer1: false)
             }
         }
     }
@@ -236,6 +222,7 @@ extension PlayVC: NewGameDelegate {
         cards = cardsWorker?.getCards() ?? []
         setOpenedCards(appeared: false)
         setClosedCards(appeared: true)
+        toggleDeck(hidden: false)
     }
 }
 
@@ -258,11 +245,7 @@ extension PlayVC: UICollectionViewDelegate {
                 self.sendData(of: currentCard.name)
 
                 if currentCard.suit == remainedCard?.suit {
-                    self.cardHolder.forEach {
-                        self.player1Cards.append($0)
-                        self.cardHolder.removeFirst()
-                    }
-                    
+                    self.update(isPlayer1: true)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self]  in
                         guard let self else { return }
                         //TODO: - FIX  uncomment this
@@ -273,14 +256,8 @@ extension PlayVC: UICollectionViewDelegate {
                 self.removeDataSourceItem(at: indexPath)
                 self.player1CardAmount.text = "\(self.player1Cards.count)"
                 //TODO: - FIX  uncomment this
-                self.cardHiderAnimation(appear: true, with: self.hidePlayer1CardsView, for: self.player1Cards)
-                self.cardHiderAnimation(appear: false, with: self.hidePlayer2CardsView, for: self.player2Cards)
-                
-                //TODO: - FIX  this logic!!!!!!!
-                if (self.player1Cards.isEmpty && self.player2Cards.isEmpty) || self.player1Cards.isEmpty {
-                    self.closedCards.isUserInteractionEnabled = true
-                }
-                
+                self.hide(cards: true, forPlayer1: true)
+                self.hide(cards: false, forPlayer1: false)
                 if !self.isPlayer1 {
                     self.isPlayer1 = true
                 }
@@ -290,60 +267,10 @@ extension PlayVC: UICollectionViewDelegate {
     }
 }
 
-// MARK: - DataSource
-
-private extension PlayVC {
-    func makeDataSource(for collectionView: UICollectionView, with cell: UICollectionViewCell.Type) -> CardModel.DataSource {
-        CardModel.DataSource(collectionView: collectionView) { collectionView, indexPath, model in
-            let cardCell = collectionView.dequeueReusableCell(fromClass: cell.self, for: indexPath)
-            if let cardCell = cardCell as? Player1CardCell {
-                cardCell.setup(with: model.name)
-            } else if let cardCell = cardCell as? Player2CardCell {
-                cardCell.setup()
-            }
-            
-            return cardCell
-        }
-    }
-    
-    func setupDataSource() {
-        //Player 1
-        player1DataSource = makeDataSource(for: player1CardCollectionView, with: Player1CardCell.self)
-        player1CardCollectionView.dataSource = player1DataSource
-        player1CardCollectionView.delegate = self
-        //Player 2
-        player2DataSource = makeDataSource(for: player2CardCollectionView, with: Player2CardCell.self)
-        player2CardCollectionView.dataSource = player2DataSource
-        player2CardCollectionView.delegate = self
-    }
-    
-    private func updateDataSource(animated: Bool) {
-        //1 Player
-        var player1Snapshot = CardModel.DataSourceSnapshot()
-        player1Snapshot.appendSections([.playerHolder])
-        player1Snapshot.appendItems(player1Cards)
-        
-        animationManager.reorderAnimation(for: player1Cards, on: player1CardCollectionView)
-        player1DataSource.apply(player1Snapshot, animatingDifferences: animated)
-        //2 Player
-        var player2Snapshot = CardModel.DataSourceSnapshot()
-        player2Snapshot.appendSections([.playerHolder])
-        player2Snapshot.appendItems(player2Cards)
-        animationManager.reorderAnimation(for: player2Cards, on: player2CardCollectionView)
-        player2DataSource.apply(player2Snapshot, animatingDifferences: animated)
-    }
-    
-    
-    //fix fading animation issue when receiving cards
-    private func removeDataSourceItem(at indexPath: IndexPath) {
-        player1Cards.remove(at: indexPath.item)
-        updateDataSource(animated: false)
-    }
-}
-
 // MARK: - MC service
 
 extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
+    
     //MARK: - Private methods
     
     //view indicates that player is waiting
@@ -437,66 +364,34 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
     private func receiveData(of card: CardModel) {
         //last dealt card
         let previousCard = cardHolder.last
-        //flipping from closed cards to open cards
-        flipCard(name: card.name)
+        //animations
+        player2Cards.isEmpty ? flip(card: card) : give(card: card)
         //saving opened cards in card holder
         cardHolder.append(card)
-        player2Cards.removeAll(where: {$0.name == card.name })
+        player2Cards.removeAll(where: {$0.name == card.name})
         player2CardAmount.text = "\(player2Cards.count)"
         //cards hiders
         //TODO: - FIX  uncomment this
-        cardHiderAnimation(appear: false, with: hidePlayer1CardsView, for: player1Cards)
-        cardHiderAnimation(appear: true, with: hidePlayer2CardsView, for: player2Cards)
-        
+        hide(cards: false, forPlayer1: true)
+        hide(cards: true, forPlayer1: false)
         //deck hider
-        toggleDeck(hidden: false)
+        toggleDeck(hidden: player1Cards.isEmpty ? false : true)
         
         // 1 Player
         if card.suit == previousCard?.suit {
-            closedCards.isUserInteractionEnabled = false
-            cardHolder.forEach {
-                player2Cards.append($0)
-                cardHolder.removeFirst()
-            }
+            update(isPlayer1: false)
             player2CardAmount.text = "\(player2Cards.count)"
             //TODO: - FIX  uncomment this
-            cardHiderAnimation(appear: false, with: hidePlayer1CardsView, for: player1Cards)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.95) {
-                //TODO: - FIX  uncomment this
-                self.cardHiderAnimation(appear: true, with: self.hidePlayer2CardsView, for: self.player2Cards)
-                self.setOpenedCards(appeared: false)
-                self.updateDataSource(animated: true)
-                self.player2CardCollectionView.isHidden = false
-                
-                //If both player has cards, main deck of cards is unavailable
-                if self.player1Cards.isEmpty {
-                    self.closedCards.isUserInteractionEnabled = true
-                }
-            }
+            hide(cards: false, forPlayer1: true)
+            deliverCards(forPlayer1: false)
         }
-        
         // 2 Player
         if card.suit == previousCard?.suit {
-            closedCards.isUserInteractionEnabled = false
-            cardHolder.forEach {
-                player2Cards.append($0)
-                cardHolder.removeFirst()
-            }
+            update(isPlayer1: false)
             //card receiving
-            cardReceivingAnimation(to: player2Cards)
+            receive(cardTo: player2Cards)
             player1CardAmount.text = "\(player1Cards.count)"
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.95) {
-                self.setOpenedCards(appeared: false)
-                self.updateDataSource(animated: true)
-                self.player1CardCollectionView.isHidden = false
-                
-                //If both player has cards, main deck of cards is unavailable
-                if self.player2Cards.isEmpty {
-                    self.closedCards.isUserInteractionEnabled = true
-                }
-            }
+            deliverCards(forPlayer1: true, special: true)
         }
     }
     
@@ -556,7 +451,7 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
  TODO list:
  
  1. hiding and reappearing player cards ✅
- 2. motions when taking/returning cards
+ 2. motions when taking/returning cards✅
  3. launchscreen should be displayed more time✅
  4. bluetooth support to play with another iphone✅
  5. ability to play with computer
@@ -575,5 +470,8 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
  18. add custom notifications
  19. add change card quantity for opponent ✅
  20. add label "Opponent's turn" ✅
- 21. resolve issue when opponents cards are not changing accordingly
+ 21. resolve issue when opponents cards are not changing accordingly✅
+ 22. fix deck of cards ability to be pressable in right logic.✅
+ 23. refactor and sharpen the CODE!
+ 24. card hiders does not work when press "play again" (new game).
  */

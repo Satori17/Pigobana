@@ -33,9 +33,10 @@ extension PlayVC {
     }
     
     // Card flipping animation
-    func flipCard(name: String) {
+    func flip(card: CardModel) {
         //using current card for moving animation
-        let cardImage = UIImage(named: name)
+        let cardName = card.name
+        let cardImage = UIImage(named: cardName)
         closedCards.setImage(cardImage, for: .normal)
         //animation for card moving
         let animation = CABasicAnimation(keyPath: AnimationKey.position)
@@ -49,7 +50,7 @@ extension PlayVC {
         let transition = { (_ ended: Bool) -> Void in
             if ended == true {
                 self.cards.isEmpty ? self.closedCards.setImage(nil, for: .normal) : self.closedCards.setImage(UIImage(named: ImageKey.blueBackground), for: .normal)
-                self.openedCards.image = UIImage(named: name)
+                self.openedCards.image = UIImage(named: cardName)
                 self.setOpenedCards(appeared: true)
             }
         }
@@ -58,7 +59,7 @@ extension PlayVC {
     }
     
     // Animation when player deals card
-    func cardReceivingAnimation(to direction: [CardModel]) {
+    func receive(cardTo direction: [CardModel]) {
         let animation = CABasicAnimation(keyPath: AnimationKey.positionY)
         animation.fromValue = openedCards.frame.midY
         animation.toValue = direction == player1Cards ? player1CardCollectionView.frame.midY : -player1CardCollectionView.frame.midY
@@ -71,20 +72,40 @@ extension PlayVC {
         }
     }
     
-    func cardHiderAnimation(appear: Bool, with hider: UIView, for playerCards: [CardModel]) {
+    func give(card: CardModel) {
+        let fromView = UIImageView(frame: openedCards.frame)
+        fromView.image = UIImage(named: card.name)
+        fromView.transform = CGAffineTransform(scaleX: 1, y: -1)
+        fromView.setCurvedFrame()
+        player2CardCollectionView.addSubview(fromView)
+        
+        UIView.animate(withDuration: 0.48) {
+            fromView.frame.origin.x = self.mainCardsStackView.frame.midX+12
+            fromView.frame.origin.y = self.mainCardsStackView.frame.origin.y+70
+        } completion: { _ in
+            fromView.removeFromSuperview()
+            self.openedCards.image = UIImage(named: card.name)
+            self.setOpenedCards(appeared: true)
+        }
+    }
+    
+    func hide(cards appear: Bool, forPlayer1: Bool) {
+        let playerCards = forPlayer1 ? player1Cards : player2Cards
+        let hider = forPlayer1 ? hidePlayer1CardsView : hidePlayer2CardsView
         if appear == true && !playerCards.isEmpty {
             UIView.animate(withDuration: 0.8, animations: {
-                hider.alpha = 0.7
+                hider?.alpha = 0.7
             })
         } else if appear == false {
             UIView.animate(withDuration: 0.5, animations: {
-                hider.alpha = 0               
+                hider?.alpha = 0
             })
         }
     }
     
     //TODO: - FIX
     func toggleDeck(hidden: Bool) {
+        guard !cards.isEmpty else { return }
         deckHider.frame = closedCards.bounds
         deckHider.backgroundColor = .black
         deckHider.alpha = 0

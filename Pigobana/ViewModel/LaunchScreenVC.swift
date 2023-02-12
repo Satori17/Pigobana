@@ -16,10 +16,7 @@ final class LaunchScreenVC: UIViewController {
     @IBOutlet private weak var howToPlayBtn: UIButton!
     
     //MARK: - Managers
-    private var animationManager = AnimationManager()
-    
-    //MARK: - Properties
-    
+    private var animationManager = AnimationManager()    
     
     //MARK: - View Lifecycle
     override func viewDidLoad() {

@@ -216,8 +216,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ul-sY-LWG">
-                                <rect key="frame" x="122" y="690" width="146" height="92"/>
+                                <rect key="frame" x="121.33333333333333" y="688" width="147.33333333333337" height="92"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="0Ul-sY-LWG" secondAttribute="height" multiplier="1.6:1" id="3ma-EX-Gc3"/>
                                     <constraint firstAttribute="height" constant="92" id="Ihq-Ou-3Jd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
@@ -232,8 +233,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vaI-A0-wkp">
-                                <rect key="frame" x="0.0" y="246.99999999999997" width="390" height="77.666666666666657"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="65"/>
+                                <rect key="frame" x="0.0" y="336.33333333333331" width="390" height="71.666666666666686"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="60"/>
                                 <color key="textColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -243,14 +244,11 @@
                         <viewLayoutGuide key="safeArea" id="jgm-Jk-Zqb"/>
                         <color key="backgroundColor" red="0.11423382560000001" green="0.38541043650000001" blue="0.068355514919999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="vaI-A0-wkp" firstAttribute="centerX" secondItem="t3K-Km-yaj" secondAttribute="centerX" id="0PO-K5-7RH"/>
-                            <constraint firstItem="0Ul-sY-LWG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jgm-Jk-Zqb" secondAttribute="leading" constant="122" id="CCu-ca-5aJ"/>
-                            <constraint firstItem="vaI-A0-wkp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="t3K-Km-yaj" secondAttribute="leading" id="Dwd-JS-xKQ"/>
-                            <constraint firstItem="jgm-Jk-Zqb" firstAttribute="trailing" secondItem="0Ul-sY-LWG" secondAttribute="trailing" constant="122" id="U4o-IR-oJC"/>
+                            <constraint firstItem="vaI-A0-wkp" firstAttribute="leading" secondItem="jgm-Jk-Zqb" secondAttribute="leading" id="4DX-h5-bBG"/>
+                            <constraint firstItem="vaI-A0-wkp" firstAttribute="centerY" secondItem="t3K-Km-yaj" secondAttribute="centerY" constant="-50" id="5Xi-RP-BJ8"/>
+                            <constraint firstItem="jgm-Jk-Zqb" firstAttribute="trailing" secondItem="vaI-A0-wkp" secondAttribute="trailing" id="YBS-Ja-k3c"/>
                             <constraint firstItem="0Ul-sY-LWG" firstAttribute="centerX" secondItem="t3K-Km-yaj" secondAttribute="centerX" id="hzp-YE-9WO"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vaI-A0-wkp" secondAttribute="trailing" id="ij8-JF-AUf"/>
-                            <constraint firstItem="jgm-Jk-Zqb" firstAttribute="bottom" secondItem="0Ul-sY-LWG" secondAttribute="bottom" constant="28" id="jGm-OT-Ymh"/>
-                            <constraint firstItem="vaI-A0-wkp" firstAttribute="top" secondItem="jgm-Jk-Zqb" secondAttribute="top" constant="200" id="zJl-IH-PBE"/>
+                            <constraint firstItem="jgm-Jk-Zqb" firstAttribute="bottom" secondItem="0Ul-sY-LWG" secondAttribute="bottom" constant="30" id="jGm-OT-Ymh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FqB-21-sul"/>
