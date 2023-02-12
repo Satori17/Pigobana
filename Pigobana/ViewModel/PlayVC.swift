@@ -9,7 +9,6 @@ import UIKit
 import MultipeerConnectivity
 
 final class PlayVC: UIViewController {
-    
     //MARK: - IBOutlets
     
     //opened and closed cards
@@ -90,7 +89,6 @@ final class PlayVC: UIViewController {
     
     @IBAction private func closedCardButtonPressed(_ sender: UIButton) {
         let currentCard = getLastCard()
-        sender.isUserInteractionEnabled = false
         controlPlayersAndCards(currentCard: currentCard)
         //TODO: - FIX  uncomment this
         sendData(of: currentCard.name)
@@ -180,7 +178,6 @@ final class PlayVC: UIViewController {
                     self.setOpenedCards(appeared: false)
                     self.updateDataSource(animated: true)
                     self.player1CardCollectionView.isHidden = false
-                    self.closedCards.isUserInteractionEnabled =  self.player2Cards.isEmpty ? false : true
                 }
             }
             // 2 Player
@@ -204,7 +201,6 @@ final class PlayVC: UIViewController {
                     self.setOpenedCards(appeared: false)
                     self.updateDataSource(animated: true)
                     self.player2CardCollectionView.isHidden = false
-                    self.closedCards.isUserInteractionEnabled =  self.player1Cards.isEmpty ? false : true
                 }
             }
         }
@@ -216,7 +212,6 @@ final class PlayVC: UIViewController {
 extension PlayVC: NewGameDelegate {
     func startNewGame() {
         self.dismiss(animated: true, completion: nil)
-        closedCards.isUserInteractionEnabled = true
         player1CardCollectionView.isHidden = true
         player2CardCollectionView.isHidden = true
         hidePlayer1CardsView.isHidden = true
@@ -266,7 +261,6 @@ extension PlayVC: UICollectionViewDelegate {
                 self.removeDataSourceItem(at: indexPath)
                 self.player1CardAmount.text = "\(self.player1Cards.count)"
                 //TODO: - FIX  uncomment this
-                self.toggleDeck(hidden: true)
                 self.cardHiderAnimation(appear: true, with: self.hidePlayer1CardsView, for: self.player1Cards)
                 self.cardHiderAnimation(appear: false, with: self.hidePlayer2CardsView, for: self.player2Cards)
                 
@@ -430,14 +424,14 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
         flipCard(name: card.name)
         //saving opened cards in card holder
         cardHolder.append(card)
-        player2Cards.removeAll(where: {$0.name == card.name })
+        player2Cards.removeAll(where: {$0.name == card.name})
         player2CardAmount.text = "\(player2Cards.count)"
         //cards hiders
         //TODO: - FIX  uncomment this
         cardHiderAnimation(appear: false, with: hidePlayer1CardsView, for: player1Cards)
-        cardHiderAnimation(appear: true, with: hidePlayer2CardsView, for: player2Cards)        
+        cardHiderAnimation(appear: true, with: hidePlayer2CardsView, for: player2Cards)
         //deck hider
-        toggleDeck(hidden: false)
+        toggleDeck(hidden: player1Cards.isEmpty ? false : true)
         
         // 1 Player
         if card.suit == previousCard?.suit {
@@ -455,7 +449,6 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
                 self.setOpenedCards(appeared: false)
                 self.updateDataSource(animated: true)
                 self.player2CardCollectionView.isHidden = false
-                self.closedCards.isUserInteractionEnabled =  self.player1Cards.isEmpty ? false : true
             }
         }
         // 2 Player
@@ -472,7 +465,6 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
                 self.setOpenedCards(appeared: false)
                 self.updateDataSource(animated: true)
                 self.player1CardCollectionView.isHidden = false
-                self.closedCards.isUserInteractionEnabled =  self.player2Cards.isEmpty ? false : true
             }
         }
     }
@@ -552,5 +544,6 @@ extension PlayVC: MCSessionDelegate, MCBrowserViewControllerDelegate {
  18. add custom notifications
  19. add change card quantity for opponent ✅
  20. add label "Opponent's turn" ✅
- 21. resolve issue when opponents cards are not changing accordingly
+ 21. resolve issue when opponents cards are not changing accordingly✅
+ 22. fix deck of cards ability to be pressable in right logic.✅
  */
