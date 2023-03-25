@@ -7,10 +7,6 @@
 
 import UIKit
 
-enum Section {
-    case playerHolder
-}
-
 struct CardModel {
     let name: String
     var suit: Suit = .unknown

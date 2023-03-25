@@ -2,7 +2,7 @@
 //  CardsWorker.swift
 //  Pigobana
 //
-//  Created by skhitaridze on 23.01.23.
+//  Created by Saba Khitaridze on 23.01.23.
 //
 
 import UIKit

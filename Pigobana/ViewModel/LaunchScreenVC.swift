@@ -8,32 +8,43 @@
 import UIKit
 
 final class LaunchScreenVC: UIViewController {
-    
     //MARK: - IBOutlets
+    
     @IBOutlet private weak var progressView: UIProgressView!
     @IBOutlet private weak var singlePlayerBtn: UIButton!
     @IBOutlet private weak var multiPlayerBtn: UIButton!
     @IBOutlet private weak var howToPlayBtn: UIButton!
     
-    //MARK: - Managers
-    private var animationManager = AnimationManager()    
+    //MARK: - Manager
     
-    //MARK: - View Lifecycle
+    private var animationManager: AnimationManagerDelegate?
+    
+    //MARK: - View lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        commonInit()
         launchingUI(for: [singlePlayerBtn, multiPlayerBtn, howToPlayBtn])
+    }
+    
+    // MARK: - Init
+    
+    private func commonInit() {
+        let viewController = self
+        let animationManager = AnimationManager()
+        viewController.animationManager = animationManager
     }
     
     //MARK: - IBActions
     
     //1 player
     @IBAction private func singlePlayerBtnPressed(_ sender: UIButton) {
-        animationManager.pressingAnimation(sender)
+        animationManager?.pressingAnimation(sender)
     }
     
     //2 player
     @IBAction private func multiPlayerBtnPressed(_ sender: UIButton) {
-        animationManager.pressingAnimation(sender)
+        animationManager?.pressingAnimation(sender)
         
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
             //transition to PlayVC
@@ -47,10 +58,11 @@ final class LaunchScreenVC: UIViewController {
     
     //How to play
     @IBAction private func howToPlayBtnPressed(_ sender: UIButton) {
-        animationManager.pressingAnimation(sender)
+        animationManager?.pressingAnimation(sender)
     }
     
     //MARK: - Methods
+    
     private func launchingUI(for buttons: [UIButton]) {
         //for progressView
         progressView.setProgress(1, animated: true)
